@@ -1,0 +1,251 @@
+\input{header.tex}
+\begin{document}
+
+\title{Elementary Theory of the Category of Sets}
+\author{Simon Gr\"uning}
+\address[Simon Gr\"uning]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Simon Gr\"uning]{\href{mailto:simon.gruening@uzh.ch}{simon.gruening@uzh.ch}}
+
+\newtheorem{axiom}{Axiom}
+\setcounter{axiom}{-1}
+
+\maketitle
+
+\section*{(Category Theory Exam)}
+
+
+\clearpage
+
+
+
+
+\section{The Axioms}
+
+\begin{axiom}[Category Theory]
+All Axioms of Category Theory hold.
+\end{axiom}
+
+\begin{remark}
+In the following we will be working in a category for which all the axioms stated up to this point hold. We use the terms object/set and function/morphism interchangeably.
+\end{remark}
+
+\begin{axiom}[Completeness]
+All finite limits and colimits exist. The category is complete and cocomplete. (ToDo?)
+\end{axiom}
+
+\begin{remark}
+The existence of all finite limits guarantees the existence of a terminal object $\mathbf{1}$, a product $\times$, and the equalizer. Dually, we have the existence of the initial object $\mathbf{0}$, the coproduct $+$, and the coequalizer. We also have the existence of the inverse image.
+\end{remark}
+
+\begin{remark}
+$\mathbf{1}$ plays the role of the one-element set, as for any set $X$ there is precisely one map $t: X \longrightarrow \mathbf{1}$. Since terminal sets are unique up to isomorphism, we may fix one and speak of "the" terminal object.
+\end{remark}
+
+\begin{definition}
+Let X be a set, $x: 1 \longrightarrow X$ a function. We call $x$ an \textbf{element} of $X$ and write $x \in X$. For a function $f:X \longrightarrow Y$ we define the \textbf{evaluation} as a special case of composition 
+\begin{equation*}
+f(x) := f \circ x: 1 \longrightarrow Y.
+\end{equation*}
+Notice that $f(x) \in Y$.
+\end{definition}
+
+\begin{definition}
+(ToDo) Let $f: X \longrightarrow Y$ and $y \in Y$. In our specific case, we define the \textbf{Inverse Image} of $y$ under $f$ to be an object $A$ and a function $j:A \longrightarrow X$ such that:
+\begin{enumerate}
+\item $\forall a \in A: f(j(a)) = y$
+\item For all objects $I$ and functions $q: I \longrightarrow X$ such that $\forall t \in I: f(q(t)) = y$ there exists a unique function $\bar{q}: I \longrightarrow A$ such that $q = j \circ \bar{q}$. Then the following diagram commutes: 
+
+\begin{equation*}
+\begin{tikzcd}
+I
+\arrow[drr, bend left, ""]
+\arrow[ddr, bend right, "q"]
+\arrow[dr, dotted, "{\bar{q}}" description] & & \\
+& A \arrow[r, ""] \arrow[d, "j"]
+& \mathbf{1} \arrow[d, "y"] \\
+& X \arrow[r, "f"]
+& Y
+\end{tikzcd}
+\end{equation*}
+
+
+\end{enumerate}
+\end{definition}
+
+\begin{axiom}[Sets of Functions]
+For every pair of sets $X, Y$, there exists a function set $Y^X$ from $X$ to $Y$.
+\end{axiom}
+
+\begin{remark}
+This 
+\end{remark}
+
+
+
+
+\begin{definition}
+A \textbf{natural number system} is a tuple $(N,0,s)$ with $N$ an object, $0 \in N$, and a $s: N \longrightarrow N$ such that for any object $X$, $a \in X$, and $r: X \longrightarrow X$
+there is a unique $x: N \longrightarrow X$ such that the following diagram commutes:
+
+\begin{tikzcd}
+\mathbf{1} \arrow[r, "0"] \arrow[d, "id_\mathbf{1}"]
+& N \arrow[r, "s"] \arrow[d, "x", dotted]
+& N \arrow[d, "x", dotted]   \\
+\mathbf{1} \arrow[r, "a"]
+& X \arrow[r, "r"]
+& X
+\end{tikzcd}
+.
+\end{definition}
+
+\begin{axiom}[Natural Numbers]
+There exists a natural number system (Dedeking-Pierce Object).
+\end{axiom}
+
+\begin{definition}
+A \textbf{generator} in a category $\mathcal{C}$ is an object $G$ such that for any two morphisms $f,g: X \longrightarrow Y$ in $\mathcal{C}$ if $f \neq g$ there exists a morphism $h: G \longrightarrow X$ such that $f \circ h \neq g \circ h$
+\end{definition}
+
+\begin{axiom}[Equality of Functions]
+$\mathbf{1}$ is a generator.
+\end{axiom}
+
+\begin{remark}
+Since $\mathbf{1}$ is used to represent our elements, it follows that two functions are equal precisely when they have the same domain and codomain, and they are the same on every element. To see this let the morphism $h$ be our element $x \in X$ then
+\begin{equation*}
+\forall f,g: X \longrightarrow Y: f \neq g \implies \exists x \in X : f(x) = f \circ x \neq g \circ x = g(x)
+\end{equation*}
+
+Further it follows that if an object $A$ has precisely one element then $A = 1$ (TODO)
+\end{remark}
+
+\begin{axiom}[AC]
+For any morphism $f$, if there exists an $x \in dom(f)$ then there exists a morphism $g$ such that $fgf = f$.
+\end{axiom}
+
+\begin{definition}
+$a:X \longrightarrow A$ is a \textbf{subset} of $A$ if $a$ is a monomorphism.
+
+$x$ is a \textbf{member} of $a$ if for some $A$, $x \in A$, $a$ is a subset of $A$, and there exists $\bar{x}$ such that $\bar{x}a = x$. In this case we also write $x \in a$.
+
+We write $a \subseteq b$ if for some $A$, $a$ and $b$ are both subsets of $A$ and there exists $h$ such that $a = hb$.
+\end{definition}
+
+\begin{theorem}
+Let $a, b$ subsets of $A$. Then
+\begin{equation}
+a \subseteq b \iff \forall x \in A: x \in a \implies x \in b
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+%%%
+
+\begin{axiom}[Empty Set]
+Each object other than $\mathbf{0}$ has elements.
+\end{axiom}
+
+\begin{axiom}[ToDO]
+Each element of a sum is a member of one of the injections.
+\end{axiom}
+
+\begin{axiom}[Existence of Larger Sets]
+There is an object with more than one element.
+\end{axiom}
+
+\begin{lemma}
+$\mathbf{0}$ has no elements.
+\end{lemma}
+
+\begin{proof}
+If $\mathbf{0}$ had an element, then we have a morphism $\mathbf{1} \longrightarrow \mathbf{0}$ which when precomposed with the unique map $\mathbf{0} \longrightarrow \mathbf{1}$  gives us by uniqueness the map $id_\mathbf{0}:\mathbf{0} \longrightarrow \mathbf{0}$. It follows that $\mathbf{0} = \mathbf{1}$ which contradicts Axiom 8 since then every object would have precisely one element.
+\end{proof}
+
+%%%
+
+
+\begin{theorem}[Peano's 7th postulate]
+The successor function $s$ is injective.
+\end{theorem}
+
+\begin{proof}
+needs: predecessor, injective, primitive recursion, 2, 
+\end{proof}
+
+\begin{theorem}[Peano's 9th postulate]
+Peano's Axiom of Induction holds for N.
+\end{theorem}
+needs: subset, inverse image, simple recursion
+\begin{proof}
+
+\end{proof}
+
+\begin{remark}
+Peano's other Postulates hold implicitly (ToDo).
+\end{remark}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\clearpage
+
+\begin{appendix}
+
+\section{Alternate Axiom Phrasings}
+
+\setcounter{axiom}{0}
+
+
+\begin{axiom}[Associativity and Identity, Leinster]
+For all sets W, X, Y, Z and functions
+\begin{equation*}
+\begin{tikzcd}
+W \arrow[r,"f"] & X \arrow[r,"g"] & Y \arrow[r,"h"] & Z 
+\end{tikzcd}
+\end{equation*}
+we have $h \circ (g \circ f) = (h \circ g) \circ f$. 
+
+Furthermore, for all sets $X$, there exists a function $1_{X}: X \longrightarrow X$ such that for all functions $g: X \longrightarrow Y$, $f: W \longrightarrow X$, we have that $g \circ 1_{X} = g$ and $1_{X} \circ f = f$.
+\end{axiom}
+
+\begin{axiom}[Elements, Leinster]
+There exists a terminal set $T$.
+\end{axiom}
+
+\begin{axiom}[Empty Set, Leinster]
+There exists a set with no elements.
+\end{axiom}
+
+\begin{axiom}[Cartesian Product, Leinster]
+Every pair of sets $X, Y$ has a product $(X \times Y, p_1^{X,Y}, p_2^{X,Y})$.
+\end{axiom}
+
+\begin{axiom}[Equality of Functions, Leinster]
+Let $f,g: X \longrightarrow Y$ two functions between sets. If $\forall x \in X: f(x) = g(x)$ then $f = g$.
+\end{axiom}
+
+\begin{axiom}[Inverse Image, Leinster]
+For every function $f: X \longrightarrow Y$, $y \in Y$, there exists an inverse image $f^{-1}(y)$ of $y$ under $f$.
+\end{axiom}
+
+\begin{axiom}[Subsets, Leinster]
+There exists a subset classifier.
+\end{axiom}
+
+\begin{axiom}[Choice, Leinster]
+Every surjection has a right inverse.
+\end{axiom}
+
+\begin{axiom}[Replacement, Leinster]
+TODO equality to ZFC
+\end{axiom}
+
+
+\end{appendix}
+
+\end{document}
