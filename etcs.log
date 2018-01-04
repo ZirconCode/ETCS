@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.1)  3 JAN 2018 19:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.1)  4 JAN 2018 16:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1777,6 +1777,10 @@ Package Fancyhdr Warning: \headheight is too small (19.0pt):
 [2
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
+
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (19.0pt): 
  Make it at least 20.45001pt.
@@ -1794,47 +1798,47 @@ Package Fancyhdr Warning: \headheight is too small (19.0pt):
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.205 F
+l.232 F
        or all sets W, X, Y, Z and functionspdfTeX warning (ext4): destination w
 ith the same identifier (name{axiom.2}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.217 T
+l.244 T
        here exists a terminal set $T$.pdfTeX warning (ext4): destination with t
 he same identifier (name{axiom.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.221 T
+l.248 T
        here exists a set with no elements.pdfTeX warning (ext4): destination wi
 th the same identifier (name{axiom.4}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.225 E
+l.252 E
        very pair of sets $X, Y$ has a product $(X \times Y, p_1^{X,Y}, p_2^{...
 pdfTeX warning (ext4): destination with the same identifier (name{axiom.5}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.229 L
+l.256 L
        et $f,g: X \longrightarrow Y$ two functions between sets. If $\forall...
 pdfTeX warning (ext4): destination with the same identifier (name{axiom.6}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.233 F
+l.260 F
        or every function $f: X \longrightarrow Y$, $y \in Y$, there exists a...
 pdfTeX warning (ext4): destination with the same identifier (name{axiom.7}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.237 T
+l.264 T
        here exists a subset classifier.pdfTeX warning (ext4): destination with 
 the same identifier (name{axiom.8}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.241 E
+l.268 E
        very surjection has a right inverse.
 
 Package Fancyhdr Warning: \headheight is too small (19.0pt): 
@@ -1845,23 +1849,23 @@ Package Fancyhdr Warning: \headheight is too small (19.0pt):
 [5
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 251.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 251.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
  (./etcs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 251.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 251.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
 Package rerunfilecheck Info: File `etcs.out' has not changed.
-(rerunfilecheck)             Checksum: 56176EFF2FEF6EF2645FB8FBE1159197;178.
+(rerunfilecheck)             Checksum: FEBE103F779B2F2C28798E845B05A900;232.
 Package logreq Info: Writing requests to 'etcs.run.xml'.
 \openout1 = `etcs.run.xml'.
 
  )
 (\end occurred when \iftrue on line 2 was incomplete) 
 Here is how much of TeX's memory you used:
- 36526 strings out of 493029
- 675396 string characters out of 6136234
- 905478 words of memory out of 5000000
- 39271 multiletter control sequences out of 15000+600000
+ 36602 strings out of 493029
+ 677321 string characters out of 6136234
+ 906478 words of memory out of 5000000
+ 39342 multiletter control sequences out of 15000+600000
  15863 words of font info for 65 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  63i,15n,82p,10431b,1432s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1881,10 +1885,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
 fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/symbols/msam10.pfb>
-Output written on etcs.pdf (5 pages, 192047 bytes).
+Output written on etcs.pdf (5 pages, 196539 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
