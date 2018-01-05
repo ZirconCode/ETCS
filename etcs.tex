@@ -32,7 +32,7 @@ We use the notation for composition of morphisms: $a \circ b = ba$.
 \end{remark}
 
 \begin{axiom}[Completeness]
-All finite limits and colimits exist. The category is complete and cocomplete. (ToDo?)
+The category is complete and cocomplete.
 \end{axiom}
 
 \begin{remark}
@@ -40,22 +40,32 @@ The existence of all finite limits guarantees the existence of a terminal object
 \end{remark}
 
 \begin{remark}
-$\mathbf{1}$ plays the role of the one-element set, as for any set $X$ there is precisely one map $t: X \longrightarrow \mathbf{1}$. Since terminal sets are unique up to isomorphism, we may fix one and speak of "the" terminal object.
+$\mathbf{1}$ plays the role of the one-element set, as for any set $X$ there is precisely one map $t: X \longrightarrow \mathbf{1}$. Since terminal sets are unique up to isomorphism, we may fix one and speak of "the" terminal object. We do this for all other similar cases, overloading the meaning of "the".
 \end{remark}
 
 \begin{definition}
-Let X be a set, $x: 1 \longrightarrow X$ a function. We call $x$ an \textbf{element} of $X$ and write $x \in X$. For a function $f:X \longrightarrow Y$ we define the \textbf{evaluation} as a special case of composition 
+Let X be a set, $x: \mathbf{1} \longrightarrow X$ a function. We call $x$ an \textbf{element} of $X$ and write $x \in X$. For a function $f:X \longrightarrow Y$ we define the \textbf{evaluation} as a special case of composition 
 \begin{equation*}
-f(x) := f \circ x: 1 \longrightarrow Y.
+f(x) := f \circ x: \mathbf{1} \longrightarrow Y.
 \end{equation*}
 Notice that $f(x) \in Y$.
 \end{definition}
 
-\begin{definition}
-(ToDo) Let $f: X \longrightarrow Y$ and $y \in Y$. In our specific case, we define the \textbf{Inverse Image} of $y$ under $f$ to be an object $A$ and a function $j:A \longrightarrow X$ such that:
+\begin{definition}[$\dagger$]
+Let $f: X \longrightarrow Y$ and $y \in Y$. In our specific case, we define the \textbf{Inverse Image} of $y$ under $f$ to be an object $A$ and a function $j:A \longrightarrow X$ such that:
 \begin{enumerate}
-\item $\forall a \in A: f(j(a)) = y$
-\item For all objects $I$ and functions $q: I \longrightarrow X$ such that $\forall t \in I: f(q(t)) = y$ there exists a unique function $\bar{q}: I \longrightarrow A$ such that $q = j \circ \bar{q}$. Then the following diagram commutes: 
+\item $\forall a \in A: f(j(a)) = y$. Thus the following diagram must commute:
+
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[d, "j"]
+& \mathbf{1} \arrow[d, "y"] \arrow[l, "a", swap] \\
+ X \arrow[r, "f"]
+& Y
+\end{tikzcd}
+\end{equation*}
+
+\item For all objects $I$ and functions $q: I \longrightarrow X$ such that $\forall t \in I: f(q(t)) = y$ there exists a unique function $\bar{q}: I \longrightarrow A$ such that $q = j \circ \bar{q}$. (?!ToDo!?): 
 
 \begin{equation*}
 \begin{tikzcd}
@@ -74,12 +84,18 @@ I
 \end{enumerate}
 \end{definition}
 
-\begin{axiom}[Sets of Functions]
-For every pair of sets $X, Y$, there exists a function set $Y^X$ from $X$ to $Y$.
+\begin{axiom}[Functions as Set]
+For every pair of sets $X, Y$, the exponential $Y^X$ exists.
 \end{axiom}
 
-\begin{remark}
-This 
+\begin{remark}[$\dagger$]
+The object $Y^X$ plays the role of an internal hom$[X,Y]$, in this case it wants to be the function set. For any fixed set $B$ we have an adjunction $(\-- \times B) \dashv (\--)^B$ and thus a natural bijection for any two other sets $A,C$:
+\begin{equation*}
+Hom(A \times B, C) \simeq Hom(A, C^B).
+\end{equation*}
+
+By Lawvere: For any two objects $A, B$ there exists an object $B^A$ and a mapping $A \times B^A \xrightarrow{e} B$ with the property that for any object $X$ and any mapping $A \times X\xrightarrow{f} B$ there is a unique mapping $X \xrightarrow{h} B^A$ such that $(\mathbf{1}_A \times h)e = f$. We call $e$ the evaluation map and we have that for $a \in A, f:A\longrightarrow B$, we may evaluate the name $\fourIdx{\ulcorner\mkern-3mu}{}{\urcorner}{}{f} \in B^A$ as $(a,\fourIdx{\ulcorner\mkern-3mu}{}{\urcorner}{}{f})e = af$.
+
 \end{remark}
 
 
@@ -103,7 +119,7 @@ there is a unique $x: N \longrightarrow X$ such that the following diagram commu
 \end{definition}
 
 \begin{axiom}[Natural Numbers]
-There exists a natural number system (Dedekin-Pierce Object).
+There exists a natural number system (Dedekind-Pierce Object).
 \end{axiom}
 
 \begin{definition}
@@ -115,17 +131,21 @@ $\mathbf{1}$ is a generator.
 \end{axiom}
 
 \begin{remark}
-Since $\mathbf{1}$ is used to represent our elements, it follows that two functions are equal precisely when they have the same domain and codomain, and they are the same on every element. To see this let the morphism $h$ be our element $x \in X$ then
+Since $\mathbf{1}$ is used to represent our elements, it follows that two functions are equal precisely when they have the same domain and codomain, and they are the same on every element. To see this let the morphism $h$ be denoted as element $x \in X$. Then
 \begin{equation*}
-\forall f,g: X \longrightarrow Y: f \neq g \implies \exists x \in X : f(x) = f \circ x \neq g \circ x = g(x)
+\forall f,g: X \longrightarrow Y: f \neq g \implies \exists x \in X : f(x) = f \circ x \neq g \circ x = g(x).
 \end{equation*}
 
-Further it follows that if an object $A$ has precisely one element then $A = \mathbf{1}$.
+Further it follows that if an object $A$ has precisely one element then $A = \mathbf{1}$. (ToDo)
 \end{remark}
 
 \begin{axiom}[AC]
 For any morphism $f$, if there exists an $x \in dom(f)$ then there exists a quasi-inverse $g$ such that $fgf = f$.
 \end{axiom}
+
+\begin{remark}
+All other Axioms (even the remaining three) hold in the category $\mathcal{P}os$ of partially ordered sets and order-preserving maps, however the Axiom of Choice does not. It is thus independent of the other Axioms by model construction. 
+\end{remark}
 
 \begin{definition}
 $a:X \longrightarrow A$ is a \textbf{subset} of $A$ if $a$ is a monomorphism.
@@ -214,6 +234,11 @@ needs: subset, inverse image, simple recursion
 Peano's other Postulates hold implicitly (ToDo).
 \end{remark}
 
+\section{Meta}
+
+\begin{theorem}
+If $\mathcal{C}$ is a locally small, complete model of ETCS, then $\mathcal{C}$ is equivalent to $Set$.
+\end{theorem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -222,6 +247,13 @@ Peano's other Postulates hold implicitly (ToDo).
 \clearpage
 
 \begin{appendix}
+
+\section{Small Things}
+
+\begin{remark}
+We say a morphism f factors over g if if there exists h such that $h \circ g = f$.
+\end{remark}
+
 
 \section{Alternate Axiom Phrasings}
 
@@ -272,6 +304,16 @@ Every surjection has a right inverse.
 TODO equality to ZFC
 \end{axiom}
 
+\section{Sources}
+
+\begin{enumerate}
+\item AN ELEMENTARY THEORY
+OF THE CATEGORY OF SETS (LONG VERSION)
+WITH COMMENTARY - F. WILLIAM LAWVERE
+\item Rethinking set theory - Tome Leinster
+\item \href{https://golem.ph.utexas.edu/category/2014/01/an_elementary_theory_of_the_ca.html}{n-Category Cafe} - An Elementary Theory of the Category of Sets by Clive Newstead
+\item ncatlab.org
+\end{enumerate}
 
 \end{appendix}
 
