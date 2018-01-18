@@ -17,9 +17,248 @@
 \clearpage
 
 
+\section{Leinster's Axioms}
+
+\begin{remark}
+In the following we will be working in a theory for which all the axioms stated up to this point hold. Our axioms will apply to the following data:
+
+\begin{enumerate}
+\item \textbf{Things} we call sets
+\item \textbf{Processes} between the sets which we call functions and denote $f: X \longrightarrow Y$
+\item \textbf{Composition} of two functions $f: X \longrightarrow Y$, $g: Y \longrightarrow Z$, which we denote as $g \circ f: X \longrightarrow Z$.
+\end{enumerate}
+
+We use the terms object/set and function/morphism interchangeably. We use the spatially natural notation for composition of morphisms: $a \circ b = ba$.
+\end{remark}
+
+\begin{axiom}[Associativity and Identity]
+For all sets W, X, Y, Z and functions
+\begin{equation*}
+\begin{tikzcd}
+W \arrow[r,"f"] & X \arrow[r,"g"] & Y \arrow[r,"h"] & Z 
+\end{tikzcd}
+\end{equation*}
+we have $h \circ (g \circ f) = (h \circ g) \circ f$. 
+
+Furthermore, for all sets $X$, there exists a function $1_{X}: X \longrightarrow X$ such that for all functions $g: X \longrightarrow Y$, $f: W \longrightarrow X$, we have that $g \circ 1_{X} = g$ and $1_{X} \circ f = f$.
+\end{axiom}
+
+\begin{remark}
+This Axiom allows any Category to be an accurate model of our current theory.
+\end{remark}
+
+\begin{axiom}[Elements]
+There exists a terminal set $\mathbf{1}$.
+\end{axiom}
+
+\begin{remark}
+$\mathbf{1}$ plays the role of the one-element set, as for any set $X$ there is precisely one map $t: X \longrightarrow \mathbf{1}$. Since terminal sets are unique up to isomorphism, we may fix one and speak of "the" terminal object. We do this for all other similar cases, overloading the meaning of "the".
+\end{remark}
+
+\begin{definition}
+Let X be a set, $x: \mathbf{1} \longrightarrow X$ a function. We call $x$ an \textbf{element} of $X$ and write $x \in X$. For a function $f:X \longrightarrow Y$ we define the \textbf{evaluation} as a special case of composition 
+\begin{equation*}
+f(x) := f \circ x: \mathbf{1} \longrightarrow Y.
+\end{equation*}
+Notice that $f(x) \in Y$.
+\end{definition}
+
+\begin{axiom}[Empty Set]
+There exists a set $\mathbf{0}$ with no elements.
+\end{axiom}
+
+\begin{remark}
+The empty set will play the role of an initial object.
+\end{remark}
+
+\begin{axiom}[Equality of Functions]
+Let $f,g: X \longrightarrow Y$ be two functions between sets. If $\forall x \in X: f(x) = g(x)$ then $f = g$.
+\end{axiom}
+
+\begin{remark}
+In terms of category theory, this means $\mathbf{1}$ is a generator in our category. It implies that $\mathbf{1}$ only has one element and our suggestive name is justified.
+\end{remark}
+
+\begin{definition}
+A \textbf{generator} in a category $\mathcal{C}$ is an object $G$ such that for any two morphisms $f,g: X \longrightarrow Y$ in $\mathcal{C}$ if $f \neq g$ there exists a morphism $h: G \longrightarrow X$ such that $f \circ h \neq g \circ h$
+\end{definition}
+
+\begin{axiom}[Cartesian Product]
+Every pair of sets $X, Y$ has a product $(X \times Y, p_1^{X,Y}, p_2^{X,Y})$.
+\end{axiom}
+
+\begin{remark}
+This product will play the role of our cartesian product. We require it for the following very important axiom.
+\end{remark}
+
+\begin{axiom}[Functions as Set]
+For every pair of sets $X, Y$, the exponential $Y^X$ exists.
+\end{axiom}
+
+\begin{remark}[$\dagger$]
+The object $Y^X$ plays the role of an internal hom$[X,Y]$, in this case it wants to be the function set. For any fixed set $B$ we have an adjunction $(\-- \times B) \dashv (\--)^B$ and thus a natural bijection for any two other sets $A,C$:
+\begin{equation*}
+Hom(A \times B, C) \simeq Hom(A, C^B).
+\end{equation*}
+
+By Lawvere: For any two objects $A, B$ there exists an object $B^A$ and a mapping $A \times B^A \xrightarrow{e} B$ with the property that for any object $X$ and any mapping $A \times X\xrightarrow{f} B$ there is a unique mapping $X \xrightarrow{h} B^A$ such that $(\mathbf{1}_A \times h)e = f$. We call $e$ the $\textbf{evaluation map}$ and we have that for $a \in A, f:A\longrightarrow B$, we may evaluate the name $\fourIdx{\ulcorner\mkern-3mu}{}{\urcorner}{}{f} \in B^A$ as $(a,\fourIdx{\ulcorner\mkern-3mu}{}{\urcorner}{}{f})e = af$.
+
+\end{remark}
+
+\begin{definition}[$\dagger$]
+Let $f: X \longrightarrow Y$ and $y \in Y$. We define the \textbf{Inverse Image} of $y$ under $f$ to be an object $A$ and a function $j:A \longrightarrow X$ such that:
+\begin{enumerate}
+\item $\forall a \in A: f(j(a)) = y$. Thus the following diagram must commute:
+
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[d, "j"]
+& \mathbf{1} \arrow[d, "y"] \arrow[l, "a", swap] \\
+ X \arrow[r, "f"]
+& Y
+\end{tikzcd}
+\end{equation*}
+
+\item For all objects $I$ and functions $q: I \longrightarrow X$ such that $\forall t \in I: f(q(t)) = y$ there exists a unique function $\bar{q}: I \longrightarrow A$ such that $q = j \circ \bar{q}$.
+
+\begin{equation*}
+\begin{tikzcd}
+I
+\arrow[ddr, bend right, "q"]
+\arrow[dr, dotted, "{\bar{q}}" description] & & \\
+& A \arrow[d, "j"]
+& \mathbf{1} \arrow[d, "y"] \arrow[l, ""]
+\arrow[ull, bend right, ""] \\
+& X \arrow[r, "f"]
+& Y
+\end{tikzcd}
+\end{equation*}
 
 
-\section{The Axioms}
+\end{enumerate}
+\end{definition}
+
+\begin{axiom}[Inverse Image]
+For every function $f: X \longrightarrow Y$, $y \in Y$, there exists an inverse image $f^{-1}(y)$ of $y$ under $f$.
+\end{axiom}
+
+\begin{remark}
+TODO: In terms of category theory, the inverse image is ?pullback?
+Our next axiom makes use of the inverse image:
+\end{remark}
+
+\begin{definition}
+An $\textbf{injection}$ is a function $j:A \longrightarrow X$ such that $j(a) = j(a') \implies a = a'$ for all $a,a' \in A$.
+\end{definition}
+
+\begin{definition}
+A $\textbf{subset classifier}$ is a set $\mathbf{2}$ and an element $t \in \mathbf{2}$ such that the following holds:
+\begin{enumerate}
+\item For any sets $A,X$ and an injection $j: A \longrightarrow X$, there exists a unique function $\chi: X \longrightarrow 2$ such that $j: A \longrightarrow X$ is an inverse image of $t$ under $\chi$.
+\end{enumerate}
+
+\end{definition}
+
+\begin{axiom}[Subsets]
+There exists a subset classifier.
+\end{axiom}
+
+\begin{remark}
+Note that we can now take pleasure in a well defined $\mathbf{2}^X$. TODO
+\end{remark}
+
+\begin{definition}
+A \textbf{natural number system} is a tuple $(N,0,s)$ with $N$ an object, $0 \in N$, and a $s: N \longrightarrow N$ such that for any object $X$, $a \in X$, and $r: X \longrightarrow X$
+there is a unique $x: N \longrightarrow X$ such that the following diagram commutes:
+
+\begin{equation*}
+\begin{tikzcd}
+\mathbf{1} \arrow[r, "0"] \arrow[d, "id_\mathbf{1}"]
+& N \arrow[r, "s"] \arrow[d, "x", dotted]
+& N \arrow[d, "x", dotted]   \\
+\mathbf{1} \arrow[r, "a"]
+& X \arrow[r, "r"]
+& X
+\end{tikzcd}.
+\end{equation*}
+
+\end{definition}
+
+\begin{axiom}[Natural Numbers]
+There exists a natural number system (Dedekind-Pierce Object).
+\end{axiom}
+
+\begin{remark}
+The unique map $x$ maps $N$ onto a sequence beginning at $x_0 = a$ which is recursively defined through the function $r$ as $x_{n+1} = r(x_n)$. Thus we define our natural numbers through the behaviour of all such sequences (and their starting point), and it only matters how $N$ interacts with them.
+\end{remark}
+
+\begin{definition}
+A $\textbf{surjection}$ is a function $s: X \longrightarrow Y$ such that for all $y \in Y$, there exists $x \in X$ with $s(x) = y$.
+\end{definition}
+
+\begin{definition}
+A $\textbf{right inverse}$ of a function $s: X \longrightarrow Y$ is a function $i: Y \longrightarrow X$ such that $s \circ i = id_Y$.
+\end{definition}
+
+\begin{axiom}[Choice]
+Every surjection has a right inverse.
+\end{axiom}
+
+\begin{remark}
+This is equivalent to the Axiom of Choice, as for each $y \in Y$ we must choose an $x \in s^{-1}(y) \neq \emptyset$ for any surjection $s: X \longrightarrow Y$.
+\end{remark}
+
+\begin{remark}
+The above axioms are weaker than ZFC, to show equivalence we require a final axiom:
+\end{remark}
+
+\begin{axiom}[Replacement]
+No idea. -> See Exploring Categorical Structuralism, COLIN MCLARTY, sect. 8
+\end{axiom}
+
+\begin{definition}
+$a:X \longrightarrow A$ is a \textbf{subset} of $A$ if $a$ is a monomorphism.
+
+$x$ is a \textbf{member} of $a$ if for some $A$, $x \in A$, $a$ is a subset of $A$, and there exists $\bar{x}$ such that $\bar{x}a = x$. In this case we also write $x \in a$.
+
+We write $a \subseteq b$ if for some $A$, $a$ and $b$ are both subsets of $A$ and there exists $h$ such that $a = hb$ ie. $a$ factors over $b$.
+\end{definition}
+
+\begin{theorem}
+Let $a, b$ subsets of $A$. Then
+\begin{equation}
+a \subseteq b \iff \forall x \in A: x \in a \implies x \in b
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate} 
+\item $\Rightarrow :$ Let $a \subseteq b$ and $x \in A$ with $x \in a$. Then by definition we find a morphism $h$ and $\bar{x}$ such that their respective triangles commute:
+
+\begin{equation}
+\begin{tikzcd}[column sep=small]
+& \mathbf{1} \arrow[dl, "\bar{x}"] \arrow[dr, dotted] \arrow[dd, "x", bend right=90,looseness=2,swap]& \\
+\Box \arrow[rr, "h"] \arrow[dr, "a", hook] &     & \Box \arrow[dl, "b", hook] \\
+& A
+\end{tikzcd}
+\end{equation} \newline
+
+It follows that $x = \bar{x}a = \bar{x}(hb) = (\bar{x}h)b$ is our sought after factoring for $x \in b$.
+
+\item $\Leftarrow :$ Let $a \in A$ and $a,b: \Box \longrightarrow A$ two monomorphisms. Then the Axiom of Choice implies that $\exists g: A \longrightarrow \Box : bgb = b$. By the left cancelative property of our monomorphism $b$, we retrieve $bg = id_\Box$. Define $h := ag$. We want to show that $a = hb = agb$. By Axiom 4 we may do so by proving that $\forall \bar{x} \in \Box: \bar{x}a = \bar{x}agb$. Fixing an arbitrary $\bar{x}$, we find that $x := \bar{x}a$ satisfies $x \in A$ with $x \in a$, thus $x \in b$ and it follows that $\exists y : x = yb$. Then
+\begin{equation*}
+\bar{x}hb = \bar{x}agb = xgb = (yb)gb = yb = x = \bar{x}a.
+\end{equation*}
+Thus $hb = a$ is our factoring for $a \subseteq b$. 
+\end{enumerate}
+\end{proof}
+
+
+\clearpage
+
+\section{Lawvere's Axioms}
+
+\setcounter{axiom}{0}
 
 \begin{axiom}[Category Theory]
 All Axioms of Category Theory hold.
@@ -255,55 +494,6 @@ We say a morphism f factors over g if if there exists h such that $h \circ g = f
 \end{remark}
 
 
-\section{Alternate Axiom Phrasings}
-
-\setcounter{axiom}{0}
-
-
-\begin{axiom}[Associativity and Identity, Leinster]
-For all sets W, X, Y, Z and functions
-\begin{equation*}
-\begin{tikzcd}
-W \arrow[r,"f"] & X \arrow[r,"g"] & Y \arrow[r,"h"] & Z 
-\end{tikzcd}
-\end{equation*}
-we have $h \circ (g \circ f) = (h \circ g) \circ f$. 
-
-Furthermore, for all sets $X$, there exists a function $1_{X}: X \longrightarrow X$ such that for all functions $g: X \longrightarrow Y$, $f: W \longrightarrow X$, we have that $g \circ 1_{X} = g$ and $1_{X} \circ f = f$.
-\end{axiom}
-
-\begin{axiom}[Elements, Leinster]
-There exists a terminal set $T$.
-\end{axiom}
-
-\begin{axiom}[Empty Set, Leinster]
-There exists a set with no elements.
-\end{axiom}
-
-\begin{axiom}[Cartesian Product, Leinster]
-Every pair of sets $X, Y$ has a product $(X \times Y, p_1^{X,Y}, p_2^{X,Y})$.
-\end{axiom}
-
-\begin{axiom}[Equality of Functions, Leinster]
-Let $f,g: X \longrightarrow Y$ two functions between sets. If $\forall x \in X: f(x) = g(x)$ then $f = g$.
-\end{axiom}
-
-\begin{axiom}[Inverse Image, Leinster]
-For every function $f: X \longrightarrow Y$, $y \in Y$, there exists an inverse image $f^{-1}(y)$ of $y$ under $f$.
-\end{axiom}
-
-\begin{axiom}[Subsets, Leinster]
-There exists a subset classifier.
-\end{axiom}
-
-\begin{axiom}[Choice, Leinster]
-Every surjection has a right inverse.
-\end{axiom}
-
-\begin{axiom}[Replacement, Leinster]
-TODO equality to ZFC
-\end{axiom}
-
 \section{Sources}
 
 \begin{enumerate}
@@ -313,6 +503,8 @@ WITH COMMENTARY - F. WILLIAM LAWVERE
 \item Rethinking set theory - Tome Leinster
 \item \href{https://golem.ph.utexas.edu/category/2014/01/an_elementary_theory_of_the_ca.html}{n-Category Cafe} - An Elementary Theory of the Category of Sets by Clive Newstead
 \item ncatlab.org
+\item Exploring Categorical Structuralism
+COLIN MCLARTY
 \end{enumerate}
 
 \end{appendix}
