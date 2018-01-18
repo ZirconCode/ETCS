@@ -87,10 +87,6 @@ A \textbf{generator} in a category $\mathcal{C}$ is an object $G$ such that for 
 Every pair of sets $X, Y$ has a product $(X \times Y, p_1^{X,Y}, p_2^{X,Y})$.
 \end{axiom}
 
-\begin{remark}
-This product will play the role of our cartesian product. We require it for the following very important axiom.
-\end{remark}
-
 \begin{axiom}[Functions as Set]
 For every pair of sets $X, Y$, the exponential $Y^X$ exists.
 \end{axiom}
@@ -142,11 +138,6 @@ I
 For every function $f: X \longrightarrow Y$, $y \in Y$, there exists an inverse image $f^{-1}(y)$ of $y$ under $f$.
 \end{axiom}
 
-\begin{remark}
-TODO: In terms of category theory, the inverse image is ?pullback?
-Our next axiom makes use of the inverse image:
-\end{remark}
-
 \begin{definition}
 An $\textbf{injection}$ is a function $j:A \longrightarrow X$ such that $j(a) = j(a') \implies a = a'$ for all $a,a' \in A$.
 \end{definition}
@@ -162,10 +153,6 @@ A $\textbf{subset classifier}$ is a set $\mathbf{2}$ and an element $t \in \math
 \begin{axiom}[Subsets]
 There exists a subset classifier.
 \end{axiom}
-
-\begin{remark}
-Note that we can now take pleasure in a well defined $\mathbf{2}^X$. TODO
-\end{remark}
 
 \begin{definition}
 A \textbf{natural number system} is a tuple $(N,0,s)$ with $N$ an object, $0 \in N$, and a $s: N \longrightarrow N$ such that for any object $X$, $a \in X$, and $r: X \longrightarrow X$
@@ -208,14 +195,6 @@ Every surjection has a right inverse.
 This is equivalent to the Axiom of Choice, as for each $y \in Y$ we must choose an $x \in s^{-1}(y) \neq \emptyset$ for any surjection $s: X \longrightarrow Y$.
 \end{remark}
 
-\begin{remark}
-The above axioms are weaker than ZFC, to show equivalence we require a final axiom:
-\end{remark}
-
-\begin{axiom}[Replacement]
-No idea. -> See Exploring Categorical Structuralism, COLIN MCLARTY, sect. 8
-\end{axiom}
-
 \begin{definition}
 $a:X \longrightarrow A$ is a \textbf{subset} of $A$ if $a$ is a monomorphism.
 
@@ -252,6 +231,15 @@ It follows that $x = \bar{x}a = \bar{x}(hb) = (\bar{x}h)b$ is our sought after f
 Thus $hb = a$ is our factoring for $a \subseteq b$. 
 \end{enumerate}
 \end{proof}
+
+
+\begin{remark}
+The above axioms are weaker than ZFC, to have equivalence we require a final axiom. It allows for the existence of the universe created by $N$ and the power set function $\mathcal{P}(S) = \mathbf{2}^S$. We state if informally:
+\end{remark}
+
+\begin{axiom}[Replacement]
+Let $I$ be a set, and for each $i \in I$, let $X_i$ be specified (up to isomorphism) by a first order formula. Then there exists a set $X$ and a function $p: X \longrightarrow I$ such that $\forall i \in I: p^{-1}(i) \cong X_i$. 
+\end{axiom}
 
 
 \clearpage
