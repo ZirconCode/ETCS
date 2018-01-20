@@ -29,6 +29,8 @@ In the following we will be working in a theory for which all the axioms stated 
 \end{enumerate}
 
 We use the terms object/set and function/morphism interchangeably. We use the spatially natural notation for composition of morphisms: $a \circ b = ba$.
+
+Rather than defining our theory through an inclusion $\in$, we will try to examine how the sets behave with respect to one another. We probe them for wanted properties and leave the rest to the specific model. Leinster argues that the the axioms of ZFC are not very transparent and natural. When working with sets, we know how they behave and which actions are legal, however we rarely base this on the axioms. This alternate construction may remedy this.
 \end{remark}
 
 \begin{axiom}[Associativity and Identity]
@@ -75,13 +77,13 @@ The empty set will play the role of an initial object.
 Let $f,g: X \longrightarrow Y$ be two functions between sets. If $\forall x \in X: f(x) = g(x)$ then $f = g$.
 \end{axiom}
 
-\begin{remark}
-In terms of category theory, this means $\mathbf{1}$ is a generator in our category. It implies that $\mathbf{1}$ only has one element and our suggestive name is justified.
-\end{remark}
-
 \begin{definition}
 A \textbf{generator} in a category $\mathcal{C}$ is an object $G$ such that for any two morphisms $f,g: X \longrightarrow Y$ in $\mathcal{C}$ if $f \neq g$ there exists a morphism $h: G \longrightarrow X$ such that $f \circ h \neq g \circ h$
 \end{definition}
+
+\begin{remark}
+In terms of category theory, this means $\mathbf{1}$ is a generator in our category. It implies that $\mathbf{1}$ only has one element and our suggestive name is justified. We have enabled $\mathbf{1}$ to become the first tool we can use to examine the shape of a set.
+\end{remark}
 
 \begin{axiom}[Cartesian Product]
 Every pair of sets $X, Y$ has a product $(X \times Y, p_1^{X,Y}, p_2^{X,Y})$.
@@ -138,7 +140,7 @@ I
 For every function $f: X \longrightarrow Y$, $y \in Y$, there exists an inverse image $f^{-1}(y)$ of $y$ under $f$.
 \end{axiom}
 
-\begin{definition}
+\begin{definition}[$\dagger$]
 An $\textbf{injection}$ is a function $j:A \longrightarrow X$ such that $j(a) = j(a') \implies a = a'$ for all $a,a' \in A$.
 \end{definition}
 
@@ -153,6 +155,10 @@ A $\textbf{subset classifier}$ is a set $\mathbf{2}$ and an element $t \in \math
 \begin{axiom}[Subsets]
 There exists a subset classifier.
 \end{axiom}
+
+\begin{remark}
+The previous axioms non-trivially imply that $\mathbf{2}$ is well-defined and in fact it is the two-element set we know. Notice that this means that we can now take pleasure in writing $\mathcal{P}(S) := \mathbf{2}^S$.
+\end{remark}
 
 \begin{definition}
 A \textbf{natural number system} is a tuple $(N,0,s)$ with $N$ an object, $0 \in N$, and a $s: N \longrightarrow N$ such that for any object $X$, $a \in X$, and $r: X \longrightarrow X$
@@ -176,14 +182,14 @@ There exists a natural number system (Dedekind-Pierce Object).
 \end{axiom}
 
 \begin{remark}
-The unique map $x$ maps $N$ onto a sequence beginning at $x_0 = a$ which is recursively defined through the function $r$ as $x_{n+1} = r(x_n)$. Thus we define our natural numbers through the behaviour of all such sequences (and their starting point), and it only matters how $N$ interacts with them.
+The unique map $x$ maps $N$ onto a sequence beginning at $x_0 = a$ which is recursively defined through the function $r$ as $x_{n+1} = r(x_n)$. Thus we define our natural numbers through the shared behaviour of all such sequences (and their starting points), and it only matters how $N$ interacts with them.
 \end{remark}
 
-\begin{definition}
+\begin{definition}[$\dagger$]
 A $\textbf{surjection}$ is a function $s: X \longrightarrow Y$ such that for all $y \in Y$, there exists $x \in X$ with $s(x) = y$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[$\dagger$]
 A $\textbf{right inverse}$ of a function $s: X \longrightarrow Y$ is a function $i: Y \longrightarrow X$ such that $s \circ i = id_Y$.
 \end{definition}
 
@@ -195,6 +201,16 @@ Every surjection has a right inverse.
 This is equivalent to the Axiom of Choice, as for each $y \in Y$ we must choose an $x \in s^{-1}(y) \neq \emptyset$ for any surjection $s: X \longrightarrow Y$.
 \end{remark}
 
+\begin{remark}
+The above axioms are weaker than ZFC, to have equivalence we require a final axiom. It allows for the existence of the universe created by $N$ and the power set function $\mathcal{P}(S) = \mathbf{2}^S$, and similar constructions. We state if informally:
+\end{remark}
+
+\begin{axiom}[Replacement]
+Let $I$ be a set, and for each $i \in I$, let $X_i$ be specified (up to isomorphism) by a first order formula. Then there exists a set $X$ and a function $p: X \longrightarrow I$ such that $\forall i \in I: p^{-1}(i) \cong X_i$. 
+\end{axiom}
+
+\section{Subsets}
+
 \begin{definition}
 $a:X \longrightarrow A$ is a \textbf{subset} of $A$ if $a$ is a monomorphism.
 
@@ -202,6 +218,10 @@ $x$ is a \textbf{member} of $a$ if for some $A$, $x \in A$, $a$ is a subset of $
 
 We write $a \subseteq b$ if for some $A$, $a$ and $b$ are both subsets of $A$ and there exists $h$ such that $a = hb$ ie. $a$ factors over $b$.
 \end{definition}
+
+\begin{remark}
+Instead of probing only with $\mathbf{1}$ we may now also examine more complex shapes through our monomorphisms.
+\end{remark}
 
 \begin{theorem}
 Let $a, b$ subsets of $A$. Then
@@ -233,13 +253,7 @@ Thus $hb = a$ is our factoring for $a \subseteq b$.
 \end{proof}
 
 
-\begin{remark}
-The above axioms are weaker than ZFC, to have equivalence we require a final axiom. It allows for the existence of the universe created by $N$ and the power set function $\mathcal{P}(S) = \mathbf{2}^S$. We state if informally:
-\end{remark}
 
-\begin{axiom}[Replacement]
-Let $I$ be a set, and for each $i \in I$, let $X_i$ be specified (up to isomorphism) by a first order formula. Then there exists a set $X$ and a function $p: X \longrightarrow I$ such that $\forall i \in I: p^{-1}(i) \cong X_i$. 
-\end{axiom}
 
 
 \clearpage
