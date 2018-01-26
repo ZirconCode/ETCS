@@ -46,7 +46,7 @@ Furthermore, for all sets $X$, there exists a function $1_{X}: X \longrightarrow
 \end{axiom}
 
 \begin{remark}
-This Axiom allows any Category to be an accurate model of our current theory.
+This Axiom tells us that we can begin with a category, and we shall further restrict the behaviour of this category in the following axioms until we have enough "essence" for a well-defined set theory.
 \end{remark}
 
 \begin{axiom}[Elements]
@@ -121,12 +121,12 @@ A \arrow[d, "j"]
 
 \begin{equation*}
 \begin{tikzcd}
-I
+I 
+\arrow[drr, bend left]
 \arrow[ddr, bend right, "q"]
 \arrow[dr, dotted, "{\bar{q}}" description] & & \\
-& A \arrow[d, "j"]
-& \mathbf{1} \arrow[d, "y"] \arrow[l, ""]
-\arrow[ull, bend right, ""] \\
+& A \arrow[d, "j"] \arrow[r, ""]
+& \mathbf{1} \arrow[d, "y"]  \\
 & X \arrow[r, "f"]
 & Y
 \end{tikzcd}
@@ -202,7 +202,11 @@ This is equivalent to the Axiom of Choice, as for each $y \in Y$ we must choose 
 \end{remark}
 
 \begin{remark}
-The above axioms are weaker than ZFC, to have equivalence we require a final axiom. It allows for the existence of the universe created by $N$ and the power set function $\mathcal{P}(S) = \mathbf{2}^S$, and similar constructions. We state if informally:
+The above axioms are weaker than ZFC, to have equivalence we require a final axiom. It allows for the existence of the universe created by $N$ and the power set function $\mathcal{P}(S) = \mathbf{2}^S$:
+\begin{equation*}
+\mathbf{N} \sqcup \mathcal{P}(\mathbf{N}) \sqcup \mathcal{P}(\mathcal{P}(\mathbf{N})) \sqcup ...
+\end{equation*}
+ and similar constructions. We state it informally:
 \end{remark}
 
 \begin{axiom}[Replacement]
@@ -221,6 +225,8 @@ We write $a \subseteq b$ if for some $A$, $a$ and $b$ are both subsets of $A$ an
 
 \begin{remark}
 Instead of probing only with $\mathbf{1}$ we may now also examine more complex shapes through our monomorphisms.
+
+Furthermore, the following proof follows from Lawvere's Axioms, where we have a slightly different axiom of choice which requires for any function $f$ (with a domain of at least one element), a semi-inverse $g$ such that $fgf = f$.
 \end{remark}
 
 \begin{theorem}
@@ -266,7 +272,6 @@ Thus $hb = a$ is our factoring for $a \subseteq b$.
 \begin{remark}
 We say a morphism f factors over g if if there exists h such that $h \circ g = f$.
 \end{remark}
-
 
 \section{Sources}
 
